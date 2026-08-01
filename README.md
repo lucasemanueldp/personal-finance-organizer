@@ -27,8 +27,8 @@ Este projeto nasceu de uma necessidade real — além de ser um projeto de portf
 
 ### Análise de Saúde Financeira
 ![Saúde Positiva](screenshots/AnalisarSaude-positiva.png)
-![Saúde Negativa](screenshots/AnalisarSaude-_negativa.png)
-![Saúde Zerada](screenshots/AnalisarSaude-_zerada.png)
+![Saúde Negativa](screenshots/AnalisarSaude-negativa.png)
+![Saúde Zerada](screenshots/AnalisarSaude-zerada.png)
 
 ## 📋 Funcionalidades
 
