@@ -5,6 +5,31 @@ Projeto desenvolvido para consolidar fundamentos de Orientação a Objetos e arq
 
 Este projeto nasceu de uma necessidade real — além de ser um projeto de portfólio, é utilizado no dia a dia para controle financeiro pessoal, o que garante evolução contínua e melhorias baseadas em uso real.
 
+## 📸 Screenshots
+
+### Menu Principal
+![Menu Principal](screenshots/Menu.png)
+
+### Cadastro de Transação
+![Cadastro](screenshots/Cadastro.png)
+
+### Minhas Transações
+![Transações](screenshots/MostrarTransacoes.png)
+
+### Consultar por ID
+![Consultar ID](screenshots/ConsultarID.png)
+
+### Remover Transação
+![Remover](screenshots/RemoverTransacao.png)
+
+### Consultar Saldo
+![Saldo](screenshots/Saldo.png)
+
+### Análise de Saúde Financeira
+![Saúde Positiva](screenshots/AnalisarSaude-positiva.png)
+![Saúde Negativa](screenshots/AnalisarSaude-_negativa.png)
+![Saúde Zerada](screenshots/AnalisarSaude-_zerada.png)
+
 ## 📋 Funcionalidades
 
 - ✅ Cadastrar transações (Receita/Despesa)
