@@ -1,73 +1,159 @@
 # 💰 Personal Finance Organizer
 
-Sistema de organização financeira pessoal desenvolvido em Java console.
-Projeto desenvolvido para consolidar fundamentos de Orientação a Objetos e arquitetura em camadas.
+Sistema de gerenciamento financeiro pessoal desenvolvido em Java.
 
-Este projeto nasceu de uma necessidade real — além de ser um projeto de portfólio, é utilizado no dia a dia para controle financeiro pessoal, o que garante evolução contínua e melhorias baseadas em uso real.
+O projeto foi criado para resolver uma necessidade real de organização financeira e, ao mesmo tempo, servir como minha principal aplicação de evolução técnica durante a formação em Desenvolvimento Backend.
 
-## 📸 Screenshots
+Ao invés de desenvolver diversos projetos isolados, optei por evoluir continuamente um único sistema, incorporando novas tecnologias conforme avanço nos estudos.
 
-### Menu Principal
-![Menu Principal](screenshots/Menu.png)
+---
 
-### Cadastro de Transação
+# 📸 Demonstração
+
+## Menu Principal
+
+![Menu](screenshots/Menu.png)
+
+## Cadastro de Transação
+
 ![Cadastro](screenshots/Cadastro.png)
 
-### Minhas Transações
+## Listagem de Transações
+
 ![Transações](screenshots/MostrarTransacoes.png)
 
-### Consultar por ID
+## Consulta por ID
+
 ![Consultar ID](screenshots/ConsultarID.png)
 
-### Remover Transação
+## Remoção de Transação
+
 ![Remover](screenshots/RemoverTransacao.png)
 
-### Consultar Saldo
+## Consulta de Saldo
+
 ![Saldo](screenshots/Saldo.png)
 
-### Análise de Saúde Financeira
-![Saúde Positiva](screenshots/AnalisarSaude-positiva.png)
-![Saúde Negativa](screenshots/AnalisarSaude-negativa.png)
-![Saúde Zerada](screenshots/AnalisarSaude-zerada.png)
+## Análise da Saúde Financeira
 
-## 📋 Funcionalidades
+### Saldo Positivo
 
-- ✅ Cadastrar transações (Receita/Despesa)
-- ✅ Listar todas as transações
-- ✅ Consultar transação por ID
-- ✅ Remover transação
-- ✅ Calcular saldo atual
-- ✅ Análise de saúde financeira
+![Positivo](screenshots/AnalisarSaude-positiva.png)
 
-## 🏗️ Arquitetura
+### Saldo Negativo
 
-O projeto segue uma arquitetura em camadas:
+![Negativo](screenshots/AnalisarSaude-negativa.png)
 
-- **Transacao.java** → Modelo de dados
-- **RepositorioTransacao.java** → Armazenamento em array
-- **ServicoTransacao.java** → Regras de negócio
-- **PersonalFinanceOrganizer.java** → Menu e interação com usuário
+### Saldo Zerado
 
-## 🚀 Como executar
+![Zerado](screenshots/AnalisarSaude-zerada.png)
 
-1. Clone o repositório:
-git clone https://github.com/lucasemanueldp/personal-finance-organizer.git
+---
 
-2. Abra no NetBeans ou IntelliJ
-3. Execute o arquivo PersonalFinanceOrganizer.java
+# ✨ Funcionalidades
 
-## 🛠️ Tecnologias
+- Cadastro de receitas e despesas
+- Listagem de transações
+- Consulta de transações por ID
+- Remoção de transações
+- Cálculo automático do saldo
+- Análise personalizada da saúde financeira
 
-- Java 17+
-- Orientação a Objetos (POO)
-- Arquitetura em camadas (Repository/Service)
+---
 
-## 📌 Próximas evoluções
+# 🏛️ Estrutura do Projeto
+
+```
+src/
+└── personalfinanceorganizer/
+    ├── PersonalFinanceOrganizer.java
+    ├── RepositorioTransacao.java
+    ├── ServicoTransacao.java
+    └── Transacao.java
+```
+
+### Responsabilidade de cada classe
+
+| Classe | Responsabilidade |
+|---------|------------------|
+| `PersonalFinanceOrganizer` | Interface de interação com o usuário e menu principal |
+| `ServicoTransacao` | Contém as regras de negócio da aplicação |
+| `RepositorioTransacao` | Gerencia o armazenamento e manipulação das transações |
+| `Transacao` | Representa o modelo de uma transação financeira |
+
+---
+
+# 🛠️ Tecnologias
+
+- Java
+- Programação Orientada a Objetos (POO)
+- Git
+- GitHub
+
+---
+
+# 📚 Conceitos praticados
+
+Durante o desenvolvimento deste projeto foram aplicados conceitos como:
+
+- Encapsulamento
+- Organização em camadas
+- Separação de responsabilidades
+- Estruturação de aplicações Java
+- Regras de negócio
+- Refatoração contínua
+
+---
+
+# 🚀 Roadmap
+
+Este projeto continuará evoluindo conforme minha evolução como desenvolvedor.
+
+## ✅ Versão Atual
+
+- Java Console
+- CRUD completo
+- Arquitetura em camadas
+- Análise da saúde financeira
+
+## 🔄 Próxima etapa
 
 - Migração de arrays para ArrayList
-- Persistência com banco de dados
-- API REST com Spring Boot
+- Collections
 
-## 👨‍💻 Autor
+## ⏳ Futuras versões
 
-Lucas Emanuel — estudante de ADS em formação para desenvolvedor backend Java.
+- Persistência com JDBC
+- Banco de Dados SQL
+- Spring Boot
+- API REST
+- Spring Data JPA
+- Testes automatizados
+
+---
+
+# ▶️ Como executar
+
+Clone o repositório
+
+```bash
+git clone https://github.com/lucasemanueldp/personal-finance-organizer.git
+```
+
+Abra o projeto no NetBeans ou IntelliJ IDEA.
+
+Execute a classe:
+
+```
+PersonalFinanceOrganizer.java
+```
+
+---
+
+# 👨‍💻 Autor
+
+**Lucas Emanuel**
+
+Estudante de Análise e Desenvolvimento de Sistemas, com foco em Desenvolvimento Backend Java.
+
+Atualmente construindo uma base sólida através da evolução contínua deste projeto.
