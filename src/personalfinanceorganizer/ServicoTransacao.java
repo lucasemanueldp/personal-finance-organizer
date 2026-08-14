@@ -1,4 +1,7 @@
 package personalfinanceorganizer;
+
+import java.util.ArrayList;
+
 public class ServicoTransacao {
     //ATRIBUTO 
     private RepositorioTransacao repositorio;
@@ -20,27 +23,27 @@ public class ServicoTransacao {
     }
     
     public double calcularSaldo() {
-        Transacao[] transacoes = this.repositorio.listar();
+        ArrayList <Transacao> transacoes = this.repositorio.listar();
         double saldo= 0;
-        for (int i=0; i< this.repositorio.getContador() ; i++) {
-            if(transacoes[i].getCategoria().equalsIgnoreCase("Receita")) {
-                saldo = saldo + transacoes[i].getValor();
+        for (int i=0; i< transacoes.size(); i++) {
+            if(transacoes.get(i).getCategoria().equalsIgnoreCase("Receita")) {
+                saldo = saldo + transacoes.get(i).getValor();
             }else {
-                saldo = saldo - transacoes[i].getValor();
+                saldo = saldo - transacoes.get(i).getValor();
             }
         }
         return saldo;
     }
     public void listarFormatado() {
-        Transacao[] transacoes = this.repositorio.listar();
+        ArrayList <Transacao> transacoes = this.repositorio.listar();
         System.out.println("--------------------------------------------------------------------------------------------");
         System.out.println("                                    MINHAS TRANSAÇÕES                                       ");
         System.out.println("--------------------------------------------------------------------------------------------");
-        if (this.repositorio.getContador()== 0) {
+        if (transacoes.size()== 0) {
             System.out.println("Não possui nenhum item cadastrado no momento.");
         }else {
-            for (int i=0;i < this.repositorio.getContador();i++) {
-                System.out.println(transacoes[i]);
+            for (int i=0;i < transacoes.size();i++) {
+                System.out.println(transacoes.get(i));
             }
         }
         }
@@ -65,12 +68,12 @@ public class ServicoTransacao {
         double saldo = calcularSaldo();
         double totalReceita = 0;
         double totalDespesas= 0;
-        Transacao[] transacoes = this.repositorio.listar();
-        for (int i=0;i< this.repositorio.getContador();i++) {
-            if (transacoes[i].getCategoria().equalsIgnoreCase("Receita")) {
-                totalReceita += transacoes[i].getValor();
+        ArrayList<Transacao> transacoes = this.repositorio.listar();
+        for (int i=0;i< transacoes.size();i++) {
+            if (transacoes.get(i).getCategoria().equalsIgnoreCase("Receita")) {
+                totalReceita += transacoes.get(i).getValor();
             }else {
-                totalDespesas += transacoes[i].getValor();
+                totalDespesas += transacoes.get(i).getValor();
             }
         }
         System.out.println("----------------------------");

@@ -1,49 +1,44 @@
 package personalfinanceorganizer;
+
+import java.util.ArrayList;
+
 public class RepositorioTransacao {
     //ATRIBUTOS
-    private Transacao[] transacoes; 
-    private int contador;
+    private ArrayList<Transacao> transacoes; 
+    private int proximoId;
     
     //CONSTRUTOR
-    public RepositorioTransacao(int capacidade) {
-        this.transacoes = new Transacao[capacidade];
-        this.contador = 0;
+    public RepositorioTransacao() {
+        this.transacoes = new ArrayList<Transacao>();
+        this.proximoId = 1;
     }
-    //GETTERS
 
-    public int getContador() {
-        return contador;
-    }
     //MÉTODOS
     public void cadastrar(Transacao t) {
-        if (this.contador < this.transacoes.length) {
-        t.setId(this.contador + 1);
-        this.transacoes[this.contador] = t;
-        this.contador++;
-        } else {
-            System.out.println("Repositório Cheio! Não é possível cadastrar mais itens.");
+        t.setId(this.proximoId);
+        this.proximoId++;
+        this.transacoes.add(t);
         }
-    }
-    public Transacao[] listar() {
-        return transacoes;
+    
+    public ArrayList<Transacao> listar() {
+        return this.transacoes;
     }
     public Transacao consultar(int id) {
-        for (int i = 0; i< this.contador;i++) {
-            if(this.transacoes[i].getId() == id)
-            return transacoes[i];
+        for (int i = 0; i< this.transacoes.size();i++) {
+            if(this.transacoes.get(i).getId() == id)
+            return this.transacoes.get(i);
         }
         return null;
     }
     public boolean remover(int id) {
-        for (int i=0; i< this.contador;i++) {
-            if (this.transacoes[i].getId() == id) {
-                for(int d=i;d<this.contador-1;d++){
-                    transacoes[d] = transacoes[d+1];
-                }
-            this.contador--;
-            return true;
+        for (int i=0; i< this.transacoes.size();i++) {
+            if (this.transacoes.get(i).getId() == id) {
+                this.transacoes.remove(i);
+                return true;
             }
         }
+        
         return false;
     }
+    
 }

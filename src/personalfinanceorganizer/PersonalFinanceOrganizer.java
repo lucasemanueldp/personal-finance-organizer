@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class PersonalFinanceOrganizer {
     public static void main(String[] args) {
         Scanner r = new Scanner(System.in);
-        RepositorioTransacao rp = new RepositorioTransacao(100);
+        RepositorioTransacao rp = new RepositorioTransacao();
         ServicoTransacao st = new ServicoTransacao(rp);
         boolean menu = true;
         int opcao;
