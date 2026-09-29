@@ -12,16 +12,18 @@ public class ServicoTransacao {
     }
     
     //MÉTODOS
-    public boolean verificaCadastro(Transacao t) {
-        if (t.getCategoria().equalsIgnoreCase("Receita") ||
-            t.getCategoria().equalsIgnoreCase("Despesa")) {
-            repositorio.cadastrar(t);
-            return true;
+    public void verificaCadastro(Transacao t) {
+        if (!t.getCategoria().equalsIgnoreCase("Receita") &&
+               !t.getCategoria().equalsIgnoreCase("Despesa")) {
+            throw new IllegalArgumentException("Você digitou o tipo da categoria errada, " +
+                    "so há 2 categorias, Receita ou Despesa.");
         }
-        System.out.println("Você digitou o tipo da categoria errada, so há 2 categorias, Receita ou Despesa.");
-        return false;
+        if (t.getValor() <= 0) {
+            throw new IllegalArgumentException("Valor precisa ser maior que 0");
+        }
+        repositorio.cadastrar(t);
+
     }
-    
     public double calcularSaldo() {
         ArrayList <Transacao> transacoes = this.repositorio.listar();
         double saldo= 0;
@@ -57,13 +59,10 @@ public class ServicoTransacao {
     }
     public void removerFormatado(int id) {
         Transacao t = this.repositorio.consultar(id);
-        boolean removeu = this.repositorio.remover(id);
-        if (removeu) {
-            System.out.println("O item "+ t.getDescricao() +" foi removido com sucesso.");
-        }else {
-            System.out.println("O ID escolhido não foi encontrado. Digite apenas um dentre os disponíveis.");
-        }
+        this.repositorio.remover(id);
+        System.out.println("O item "+ t.getDescricao() +" foi removido com sucesso.");
     }
+
     public void analisarSaude() {
         double saldo = calcularSaldo();
         double totalReceita = 0;

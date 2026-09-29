@@ -30,15 +30,17 @@ public class RepositorioTransacao {
         }
         return null;
     }
-    public boolean remover(int id) {
+    public void remover(int id) {
+
         for (int i=0; i< this.transacoes.size();i++) {
             if (this.transacoes.get(i).getId() == id) {
                 this.transacoes.remove(i);
-                return true;
+                return;
             }
         }
-        
-        return false;
+        throw new TransacaoNaoEncontradaException("Transação não encontrada para o ID informado.");
+
+
     }
     
 }

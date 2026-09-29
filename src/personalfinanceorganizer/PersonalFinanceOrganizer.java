@@ -40,11 +40,14 @@ public class PersonalFinanceOrganizer {
                     String data = r.nextLine();
                     System.out.println("-------------------------------------");
                     Transacao t = new Transacao(categoria, descricao, valor, data);
-                    boolean cadastrou = st.verificaCadastro(t);
-                    if (cadastrou) {
+                    try {
+                        st.verificaCadastro(t);
                         System.out.println("-------------------------------------");
                         System.out.println("Item cadastrado com sucesso!");
-                    } 
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("-------------------------------------");
+                        System.out.println(e.getMessage());
+                    }
                     
                 break;
                 //MOSTRAR TRANSAÇÃO
@@ -65,7 +68,11 @@ public class PersonalFinanceOrganizer {
                     System.out.println("Qual item você deseja remover? [Digite o ID do item em específico]");
                     int idr = r.nextInt();
                     r.nextLine();
-                    st.removerFormatado(idr);
+                    try {
+                        st.removerFormatado(idr);
+                    }catch (TransacaoNaoEncontradaException e) {
+                        System.out.println(e.getMessage());
+                    }
                 break;
                 //VER SALDO
                 case 5:
