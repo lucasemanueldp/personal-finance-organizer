@@ -1,6 +1,7 @@
 package personalfinanceorganizer;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ServicoTransacao {
     //ATRIBUTO 
@@ -15,11 +16,16 @@ public class ServicoTransacao {
     public void verificaCadastro(Transacao t) {
         if (!t.getCategoria().equalsIgnoreCase("Receita") &&
                !t.getCategoria().equalsIgnoreCase("Despesa")) {
-            throw new IllegalArgumentException("Você digitou o tipo da categoria errada, " +
-                    "so há 2 categorias, Receita ou Despesa.");
+            throw new IllegalArgumentException("Categoria inválida. " +
+                    "Digite Receita ou Despesa.");
         }
         if (t.getValor() <= 0) {
-            throw new IllegalArgumentException("Valor precisa ser maior que 0");
+            throw new IllegalArgumentException("O valor precisa ser maior que zero " +
+                    "(ex.: 150,00).");
+        }
+        if(t.getDescricao().isBlank()) {
+            throw new IllegalArgumentException("A descrição não pode ficar em branco. " +
+                    "Informe um nome para a transação (ex.: Aluguel, Mercado).");
         }
         repositorio.cadastrar(t);
 
@@ -36,11 +42,7 @@ public class ServicoTransacao {
         }
         return saldo;
     }
-    public void listarFormatado() {
-        ArrayList <Transacao> transacoes = this.repositorio.listar();
-        System.out.println("--------------------------------------------------------------------------------------------");
-        System.out.println("                                    MINHAS TRANSAÇÕES                                       ");
-        System.out.println("--------------------------------------------------------------------------------------------");
+    public void listarFormatado(List<Transacao> transacoes) {
         if (transacoes.size()== 0) {
             System.out.println("Não possui nenhum item cadastrado no momento.");
         }else {
@@ -49,10 +51,37 @@ public class ServicoTransacao {
             }
         }
         }
+    public List<Transacao> listarTodas() {
+        return this.repositorio.listar();
+        }
+
+    public List<Transacao> listarReceitas() {
+        return this.repositorio.listar().stream()
+                .filter(t -> t.getCategoria().equalsIgnoreCase("Receita"))
+                .toList();
+
+    }
+    public List<Transacao> listarDespesas() {
+        return this.repositorio.listar().stream()
+                .filter(t -> t.getCategoria().equalsIgnoreCase("Despesa"))
+                .toList();
+
+    }
+    public List<Transacao> listarMaiorValor() {
+        return this.repositorio.listar().stream()
+                .sorted((t1,t2) -> Double.compare(t2.getValor(),t1.getValor()))
+                .toList();
+    }
+    public List<Transacao> listarMenorValor() {
+        return this.repositorio.listar().stream()
+                .sorted((t1,t2) -> Double.compare(t1.getValor(),t2.getValor()))
+                .toList();
+    }
+
     public void consultarFormatado(int id) {
         Transacao t = this.repositorio.consultar(id);
         if (t == null) {
-            System.out.println("Não há itens cadastrados para buscar");
+            System.out.println("Nenhuma transação encontrada para o ID informado.");
         }else {
             System.out.println(t);
         }

@@ -12,3 +12,4 @@ nbproject/project.xml
 .DS_Store
 .idea/
 *.iml
+out/
